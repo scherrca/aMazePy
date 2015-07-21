@@ -8,13 +8,13 @@ pack = ["cactus", "catnip", "sandwich", "sword", "honey"]
 def start():
   # Ask the user if they would like to enter the maze
   print("Would you like to see if you can get through the maze?")
-  answer = input("Enter 'Yes' or 'No' ")
+  answer = input("Enter 'Yes' or 'No' ").lower()
   # If the user answers yes:
-  if answer == "Yes":
+  if answer == "yes":
     # Welcome the user and explain the maze
     welcome()
   # If the user answers no:
-  elif answer == "No":
+  elif answer == "no":
     # Display a message to the user acknowledging their "no" response
     print("Fine. Be that way.")
   # If the user does not answer yes or no:
@@ -69,16 +69,16 @@ def lobby():
   print("\n\nYou are in: a cavernous lobby.\n"
   "Exits: there is a door to the North and a door to the East.\n")
   # Prompt the user and read in their respnse
-  answer = input("Go: Enter 'North,' East', 'Teleport' or 'sandwich' to eat your sandwich: ")
+  answer = input("Go: Enter 'North,' East', 'Teleport' or 'sandwich' to eat your sandwich: ").lower()
   # If the user answers "North," call the "unicorns" function to "move" the user to that room.
-  if answer == "North":
+  if answer == "north":
     unicorns()
   # If the user answers "East," call the "cats" function to "move" the user to that room.
-  elif answer == "East":
+  elif answer == "east":
     cats()
   # If the user answers "Teleport" call the "teleport" function to move the user to a 
   # random room.
-  elif answer == "Teleport":
+  elif answer == "teleport":
     teleport()
   # If the user answers "sandwich," remove it from their pack and start the room again
   elif answer == "sandwich":
@@ -100,10 +100,10 @@ def unicorns():
   "Exits: there are lots of exits, but too many darn unicorns in between you and the doors.")
   # Prompt the user and read in their respnse
   answer = input("Go: Enter 'Teleport,''honey' or 'catnip' to offer to the unicorns,\n"
-  "'sword' to attack the unicorns or 'sandwich' to eat your sandwich: ")
+  "'sword' to attack the unicorns or 'sandwich' to eat your sandwich: ").lower()
   # If the user answers "Teleport" call the "teleport" function to move the user to a 
   # random room.
-  if answer == "Teleport":
+  if answer == "teleport":
     teleport()
   # If the user answers "sandwich," remove it from their pack and start the room again
   elif answer == "sandwich":
@@ -122,15 +122,15 @@ def unicorns():
     # If the item was still in the pack:
     if bool_item == True:
       # Prompt the user to enter a direction
-      answer = input("Enter 'West', 'East', or 'South'\n")
+      answer = input("Enter 'West', 'East', or 'South'\n").lower()
       # If the user answers "West," call the "dragons" function to "move" the user to that room.
-      if answer == "West":
+      if answer == "west":
         dragons()
       #If the user answers "East," call the "honey" function to "move" the user to that room.
-      elif answer == "East":
+      elif answer == "east":
         honey()
       #If the user answers "South," call the "lobby" function to "move" the user to that room.
-      elif answer == "South":
+      elif answer == "south":
         lobby()
   # If the user answers "sword", end the maze
   elif answer == "sword":
@@ -167,16 +167,16 @@ def dragons():
   "Exits: there is a door to the East, and a door to the South, but a dragon is blocking it.")
   # Prompt the user and read in their respnse
   answer = input("Go: Enter 'Mead,' 'Steak,' 'sword' to attack, 'sandwich' to eat your sandwich,\n"
-    "'honey' to offer to the dragons, 'East,' or 'Teleport': ")
+    "'honey' to offer to the dragons, 'East,' or 'Teleport': ").lower()
   #If the user answers "East," call the "unicorns" function to "move" the user to that room.
-  if answer == "East":
+  if answer == "east":
     unicorns()
   # If the user answers "Steak", call the "steak" function
-  elif answer == "Steak":
+  elif answer == "steak":
     steak()
   # If the user answers "Teleport" call the "teleport" function to move the user to a 
   # random room.
-  elif answer == "Teleport":
+  elif answer == "teleport":
     teleport()
   # If the user answers "sandwich," remove it from their pack and start the room again
   elif answer == "sandwich":
@@ -184,13 +184,13 @@ def dragons():
     pack_item("sandwich")
     dragons()
   # If the user answers "Mead", prompt them to choose another option
-  elif answer == "Mead":
+  elif answer == "mead":
     print("\n\nGreat. Now the dragons are drunk. They play silly drinking games then fall asleep.\n"
     "Your only option is to Retreat or try to find one that's still awake and offer him/her Steak")
-    answer = input("Go: enter 'East' or 'Steak.' ")
-    if answer == "East":
+    answer = input("Go: enter 'East' or 'Steak.' ").lower()
+    if answer == "east":
       unicorns()
-    if answer == "Steak":
+    if answer == "steak":
       steak()
   elif answer == "honey":
     message = "\nHow SWEET of you. Dragons are impressed- they love honey,\n"
@@ -221,7 +221,7 @@ def honey():
   "And this time, they DO give a sh*t. About eating your face!"
   "Exits: they're blocking the doors!\n")
   # Prompt the user and read in their respnse
-  answer = input("Go: enter 'Teleport' or offer them 'honey' or 'catnip': ")
+  answer = input("Go: enter 'Teleport' or offer them 'honey' or 'catnip': ").lower()
   if answer == "catnip":
     message = catnip_mes
     pack_item("catnip")
@@ -234,16 +234,16 @@ def honey():
     pack_item("honey")
     # If the item was still in the pack, prompt the user to choose a direction
     if bool_item == True:
-      answer = input("Enter 'West' or 'South': ")
+      answer = input("Enter 'West' or 'South': ").lower()
       #If the user answers "West," call the "unicorns" function to "move" the user to that room.
-      if answer == "West":
+      if answer == "west":
         unicorns()
       #If the user answers "South," call the "cats" function to "move" the user to that room.
-      elif answer == "South":
+      elif answer == "south":
         cats()
       # If the user answers "Teleport" call the "teleport" function to move the user to a 
       # random room.
-  elif answer == "Teleport":
+  elif answer == "teleport":
     teleport()
   # If the user answers "sandwich," remove it from their pack and start the room again
   elif answer == "sandwich":
@@ -265,7 +265,7 @@ def cats():
   "So much grumpy cat."
   "Exits: they are blocking all exits!")
   # Prompt the user and read in their respnse
-  answer = input("Go: enter 'Teleport' or offer them 'catnip', 'sword' or 'cactus': ")
+  answer = input("Go: enter 'Teleport' or offer them 'catnip', 'sword' or 'cactus': ").lower()
   #If the user answers "West," call the "lobby" function to "move" the user to that room.
   if answer == "catnip":
     message = catnip_mes
@@ -279,15 +279,15 @@ def cats():
     pack_item("cactus")
     # If the item was still in the list, prompt the user to choose a direction
     if bool_item == True:
-      answer = input("Enter 'West' or 'North': ")
-    if answer == "West":
+      answer = input("Enter 'West' or 'North': ").lower()
+    if answer == "west":
       lobby()
     #If the user answers "North," call the "honey" function to "move" the user to that room.
-    elif answer == "North":
+    elif answer == "north":
       honey()
     # If the user answers "Teleport" call the "teleport" function to move the user to a 
     # random room.
-  elif answer == "Teleport":
+  elif answer == "teleport":
     teleport()
   # If the user answers "sandwich," remove it from their pack and start the room again
   elif answer == "sandwich":
@@ -300,7 +300,7 @@ def cats():
     pack_item("sword")
     # If the item was still in the list, prompt the user to choose a direction
     if bool_item == True:
-      answer = input("Enter 'West' or 'North' to escape")
+      answer = input("Enter 'West' or 'North' to escape").lower()
   # Otherwise, if the user answers something else, responsd with an error message and
   # repeat the prompt.
   else:
