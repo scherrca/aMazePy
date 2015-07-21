@@ -282,6 +282,12 @@ def cats():
     message = sandwich_mes
     pack_item("sandwich")
     cats()
+  elif answer == "sword":
+    message = "The sword reflects little spots of lights onto the floor that send the cats\n"
+    "into a frenzy! They won't help you, but they're distracted enough to let you pass!\n"
+    pack_item("sword")
+    if bool_item = True
+    answer = input("Enter 'West' or 'North' to escape")
   # Otherwise, if the user answers something else, responsd with an error message and
   # repeat the prompt.
   else:
