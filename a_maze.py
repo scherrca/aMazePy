@@ -34,17 +34,22 @@ def welcome():
   "Your wheely backpack contains a cactus, catnip, a sandwich, the sword of Griffindor, and a jar of honey.\n")
   lobby()
 
+# Set a boolean variable to track whether or not an item is in the pack
 bool_item = False
 
 # Define the "pack_item" function to allow users to access their items, 
 # or tell them that they have already used it
 def pack_item(item):
+  # Access global variables
   global pack
   global bool_item
+  # If the item is in the list, set the boolean value to true,
+  # remove the item and display a custom message to the user
   if item in pack:
     pack.remove(item)
     bool_item = True
     print(message)
+ # Otherwise, display a message notifying the user that there is no item
   else:
     print("Nooooo! You already used your", item, "Let's just move on then.")
 
@@ -53,7 +58,7 @@ sandwich_mes = "\nNow you have super sandwich powers! Just kidding, but you feel
 "Now let's go somewhere."
 
 # Create a generic message for the user using the catnip
-catnip_mes = "Well, they do love catnip... but unfortunately, it's flakey and you're covered in it!\n"
+catnip_mes = "\nWell, they do love catnip... but unfortunately, it's flakey and you're covered in it!\n"
 "Your only choice is to run away! Teleport, activated!\n"
 
 # Define a function for the values and actions of the "Lobby" room
@@ -107,16 +112,18 @@ def unicorns():
     unicorns()
   # If the user answers "honey", remove it from their pack and start the room again
   elif answer == "honey":
-    message = "Gross. Now the unicorns are all sticky. Let's try this again.\n"
+    message = "\nGross. Now the unicorns are all sticky. Let's try this again.\n"
     pack_item("honey")
     unicorns()
   # If the user answers "catnip", remove it from their pack and allow them to choose a direction
   elif answer == "catnip":
-    message = "Everyone knows unicorns love catnip! The unicorns let you pass.\n"
-    #If the user answers "West," call the "dragons" function to "move" the user to that room.
+    message = "\nEveryone knows unicorns love catnip! The unicorns let you pass.\n"
     pack_item("catnip")
+    # If the item was still in the pack:
     if bool_item == True:
+      # Prompt the user to enter a direction
       answer = input("Enter 'West', 'East', or 'South'\n")
+      # If the user answers "West," call the "dragons" function to "move" the user to that room.
       if answer == "West":
         dragons()
       #If the user answers "East," call the "honey" function to "move" the user to that room.
@@ -127,7 +134,7 @@ def unicorns():
         lobby()
   # If the user answers "sword", end the maze
   elif answer == "sword":
-    message = "What? Who attacks unicorns??\n"
+    message = "\nWhat? Who attacks unicorns??\n"
     "Also, they have their own swords. On their faces, so- you lose this one.\n"
     "Death by unicorn- did not see that coming!\n"
     pack_item("sword")
@@ -186,19 +193,20 @@ def dragons():
     if answer == "Steak":
       steak()
   elif answer == "honey":
-    message = "How SWEET of you. Dragons are impressed- they love honey,\n"
+    message = "\nHow SWEET of you. Dragons are impressed- they love honey,\n"
     "and they happily lead you to the South door, where you see daylight- you're free! Well done!\n"
     pack_item("honey")
     if bool_item == True:
       return
   elif answer == "sword":
-    message = "Yikes. Wrong choice. There are... a LOT of dragons.\n" 
+    message = "\nYikes. Wrong choice. There are... a LOT of dragons.\n" 
     "They breathe so much fire your sword melts.\n"
     "Sorry- you don't make it this time!\n"
     pack_item("sword")
+    # If the item was still in the pack, exit the program
     if bool_item == True:
       return
-  # Otherwise, if the user answers something else, responsd with an error message and
+  # Otherwise, if the user answers something else, responds with an error message and
   # repeat the prompt.
   else:
     print("whaaat?? Please enter your answer again.")
@@ -217,12 +225,14 @@ def honey():
   if answer == "catnip":
     message = catnip_mes
     pack_item("catnip")
+    # If the item was still in the pack, call the teleport function
     if bool_item == True:
       teleport()
   if answer == "honey":
-    message = "mmm honey badgers love honey! They aren't going to help you,\n"
+    message = "\nmmm honey badgers love honey! They aren't going to help you,\n"
     "but at least now they're all distracted and you can make a run for the door!\n"
     pack_item("honey")
+    # If the item was still in the pack, prompt the user to choose a direction
     if bool_item == True:
       answer = input("Enter 'West' or 'South': ")
       #If the user answers "West," call the "unicorns" function to "move" the user to that room.
@@ -260,12 +270,14 @@ def cats():
   if answer == "catnip":
     message = catnip_mes
     pack_item("catnip")
+    # If the item was still in the pack, call the teleport function
     if bool_item == True:
       teleport()
   if answer == "cactus":
-    message = "That's grumpy cat's best friend! All the grumpy kitties go hang with cactus\n"
+    message = "\nThat's grumpy cat's best friend! All the grumpy kitties go hang with cactus\n"
     "and let you pass.\n"
     pack_item("cactus")
+    # If the item was still in the list, prompt the user to choose a direction
     if bool_item == True:
       answer = input("Enter 'West' or 'North': ")
     if answer == "West":
@@ -283,11 +295,12 @@ def cats():
     pack_item("sandwich")
     cats()
   elif answer == "sword":
-    message = "The sword reflects little spots of lights onto the floor that send the cats\n"
-    "into a frenzy! They won't help you, but they're distracted enough to let you pass!\n"
+    message = "\nThe sword reflects little spots of lights onto the floor that send the cats\n"
+    "into a frenzy! They won't help you, but they're distracted enough to let you pass.\n"
     pack_item("sword")
-    if bool_item = True
-    answer = input("Enter 'West' or 'North' to escape")
+    # If the item was still in the list, prompt the user to choose a direction
+    if bool_item == True:
+      answer = input("Enter 'West' or 'North' to escape")
   # Otherwise, if the user answers something else, responsd with an error message and
   # repeat the prompt.
   else:
