@@ -1,3 +1,7 @@
+# Author: Cait Scherr
+# Text Adventure Maze
+# 7/16/2015
+
 # Import appropriate libraries
 import random
 
