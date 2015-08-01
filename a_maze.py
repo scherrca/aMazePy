@@ -55,15 +55,13 @@ def pack_item(item):
     print(message)
  # Otherwise, display a message notifying the user that there is no item
   else:
-    print("Nooooo! You already used your", item, "Let's just move on then.")
+    print("\n\nNooooo! You already used your", item, "Let's just move on then.")
 
 # Create a generic message for the user eating the sandwich
-sandwich_mes = "\nNow you have super sandwich powers! Just kidding, but you feel better now, right?\n"
-"Now let's go somewhere."
+sandwich_mes = "\n\nNow you have super sandwich powers! Just kidding, but you feel better now, right?\nNow let's go somewhere."
 
 # Create a generic message for the user using the catnip
-catnip_mes = "\nWell, they do love catnip... but unfortunately, it's flakey and you're covered in it!\n"
-"Your only choice is to run away! Teleport, activated!\n"
+catnip_mes = "\n\nWell, they do love catnip... but unfortunately, it's flakey and you're covered in it!\nYour only choice is to run away! Teleport, activated!\n"
 
 # Define a function for the values and actions of the "Lobby" room
 def lobby():
@@ -144,6 +142,8 @@ def unicorns():
     pack_item("sword")
     if bool_item == True:
       return
+    else:
+      unicorns()
   # Otherwise, if the user answers something else, responsd with an error message and
   # repeat the prompt.
   else:
@@ -167,7 +167,7 @@ def dragons():
   "There are two treasure chests on the ground. one is labeled 'Mead' and one is labeled 'Steak.'"
   "\nThe dragons are fierce, but they give you the sad puppy dog eyes when you get near close"
   " to the chests.\nYou notice that a dragon claw couldn't open the chests, but a human hand"
-  " probably could."
+  " probably could.\n"
   "Exits: there is a door to the East, and a door to the South, but a dragon is blocking it.")
   # Prompt the user and read in their respnse
   answer = input("Go: Enter 'Mead,' 'Steak,' 'sword' to attack, 'sandwich' to eat your sandwich,\n"
@@ -222,7 +222,7 @@ def honey():
   global message
   # Display a message to the user describing the room, the exits, and their "go" options
   print("\n\nYou are in: oh dear god NOOOOO! You've stumbled into a room full of honey badgers!\n"
-  "And this time, they DO give a sh*t. About eating your face!"
+  "And this time, they DO give a sh*t. About eating your face!\n"
   "Exits: they're blocking the doors!\n")
   # Prompt the user and read in their respnse
   answer = input("Go: enter 'Teleport' or offer them 'honey' or 'catnip': ").lower()
@@ -233,8 +233,7 @@ def honey():
     if bool_item == True:
       teleport()
   if answer == "honey":
-    message = "\nmmm honey badgers love honey! They aren't going to help you,\n"
-    "but at least now they're all distracted and you can make a run for the door!\n"
+    message = "\nmmm honey badgers love honey! They aren't going to help you,\nbut at least now they're all distracted and you can make a run for the door!\n"
     pack_item("honey")
     # If the item was still in the pack, prompt the user to choose a direction
     if bool_item == True:
@@ -266,7 +265,7 @@ def cats():
   global message
   # Display a message to the user describing the room, the exits, and their "go" options
   print("\n\nYou are in: a room full of pretty, pretty kitties! Who all hate you.\n"
-  "So much grumpy cat."
+  "So much grumpy cat.\n"
   "Exits: they are blocking all exits!")
   # Prompt the user and read in their respnse
   answer = input("Go: enter 'Teleport' or offer them 'catnip', 'sword' or 'cactus': ").lower()
@@ -278,8 +277,7 @@ def cats():
     if bool_item == True:
       teleport()
   if answer == "cactus":
-    message = "\nThat's grumpy cat's best friend! All the grumpy kitties go hang with cactus\n"
-    "and let you pass.\n"
+    message = "\nThat's grumpy cat's best friend! All the grumpy kitties go hang with cactus\nand let you pass.\n"
     pack_item("cactus")
     # If the item was still in the list, prompt the user to choose a direction
     if bool_item == True:
@@ -299,14 +297,20 @@ def cats():
     pack_item("sandwich")
     cats()
   elif answer == "sword":
-    message = "\nThe sword reflects little spots of lights onto the floor that send the cats\n"
-    "into a frenzy! They won't help you, but they're distracted enough to let you pass.\n"
+    message = "\nThe sword reflects little spots of lights onto the floor that send the cats\ninto a frenzy! They won't help you, but they're distracted enough to let you pass.\n"
     pack_item("sword")
     # If the item was still in the list, prompt the user to choose a direction
     if bool_item == True:
-      answer = input("Enter 'West' or 'North' to escape").lower()
+      answer = input("Enter 'West' or 'North' to escape: ").lower()
   # Otherwise, if the user answers something else, responsd with an error message and
   # repeat the prompt.
+      if answer == "west":
+        lobby()
+      elif answer == "north":
+        honey()
+      else:
+        print ("whaaat?? Please enter your answer again.")
+        cats()
   else:
     print("whaaat?? Please enter your answer again.")
     cats()
